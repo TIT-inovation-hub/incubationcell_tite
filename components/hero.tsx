@@ -2,12 +2,15 @@ import AnimatedDots from "./AnimatedDots";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden md:pt-20 md:pb-20 px-4 py-[100px] sm:px-6 lg:px-8 bg-gradient-to-b from-[#FFF8F2] to-white dark:from-[#050505] dark:to-[#0B0B0B] transition-colors duration-500">
+    <section
+      id="home"
+      className="relative overflow-hidden md:pt-20 md:pb-20 px-4 py-[100px] sm:px-6 lg:px-8 bg-linear-to-b from-[#FFF8F2] to-white dark:from-[#050505] dark:to-[#0B0B0B] transition-colors duration-500"
+    >
       {/* === BACKGROUND GRAPHICS === */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* 🔸 Glowing 3D Blobs */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-[#EF6C00]/70 to-[#FFB300]/30 rounded-full blur-[150px] opacity-80 animate-blob"></div>
-        <div className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-400/60 to-blue-600/30 rounded-full blur-[180px] opacity-70 animate-blob delay-700"></div>
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-linear-to-br from-[#EF6C00]/70 to-[#FFB300]/30 rounded-full blur-[150px] opacity-80 animate-blob"></div>
+        <div className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-linear-to-tr from-cyan-400/60 to-blue-600/30 rounded-full blur-[180px] opacity-70 animate-blob delay-700"></div>
 
         {/* 🔹 3D Light Rings */}
         <div className="absolute top-1/2 left-1/2 w-[900px] h-[900px] border border-cyan-400/20 rounded-full blur-sm animate-spin-slower transform -translate-x-1/2 -translate-y-1/2"></div>
@@ -15,7 +18,7 @@ export default function Hero() {
 
         {/* 🔸 Circuit Mesh Background */}
         <svg
-          className="absolute inset-0 w-full h-full opacity-[0.08]"
+          className="absolute inset-0 w-full h-full opacity-[0.10]"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
@@ -44,8 +47,8 @@ export default function Hero() {
         <AnimatedDots />
 
         {/* 🔸 Light Trails */}
-        <div className="absolute top-1/4 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-orange-400/50 to-transparent blur-sm animate-light-trail"></div>
-        <div className="absolute bottom-1/3 right-0 w-full h-[2px] bg-gradient-to-l from-transparent via-cyan-400/40 to-transparent blur-sm animate-light-trail delay-500"></div>
+        <div className="absolute top-1/4 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-orange-400/50 to-transparent blur-sm animate-light-trail"></div>
+        <div className="absolute bottom-1/3 right-0 w-full h-0.5 bg-linear-to-l from-transparent via-cyan-400/40 to-transparent blur-sm animate-light-trail delay-500"></div>
       </div>
 
       {/* === HERO CONTENT === */}
@@ -58,7 +61,7 @@ export default function Hero() {
 
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-gray-900 dark:text-white">
           TIT Excellence
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#EF6C00] via-[#FF9800] to-[#00BCD4] animate-gradient">
+          <span className="block text-transparent bg-clip-text bg-linear-to-r from-[#EF6C00] via-[#FF9800] to-[#00BCD4] animate-gradient">
             Incubation Cell
           </span>
         </h1>
