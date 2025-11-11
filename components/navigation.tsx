@@ -13,9 +13,9 @@ const NavbarComponent = () => {
     { name: "HOME", href: "#home" },
     { name: "ABOUT US", href: "#about" },
     { name: "GUIDELINES", href: "#", isDropdown: true },
-    { name: "OUR PROJECT", href: "#" },
-    { name: "FAQS", href: "#" },
-    { name: "CONTACT US", href: "#" },
+    { name: "OUR PROJECT", href: "/ourprojects" },
+    { name: "FAQS", href: "/faqs" },
+    { name: "CONTACT US", href: "/contactus" },
   ];
 
   const dropdownItems = [
@@ -144,7 +144,7 @@ const NavbarComponent = () => {
           {/* Buttons */}
           <div className="flex items-center gap-2 sm:gap-3">
             <a
-              href="#"
+              href="/contactus"
               className="hidden md:inline-block px-6 sm:px-7 py-3 border-2 border-[#EF6C00] text-[#EF6C00] text-base sm:text-lg font-semibold rounded-2xl transition-colors hover:bg-[#EF6C00] hover:text-white shadow-sm"
             >
               Apply
@@ -280,7 +280,7 @@ const NavbarComponent = () => {
             {/* Mobile Buttons */}
             <div className="mt-3 flex flex-col gap-2">
               <a
-                href="#"
+                href="/contactus"
                 className="w-full text-center px-6 py-2 border-2 border-[#EF6C00] text-[#EF6C00] font-semibold rounded-2xl hover:bg-[#EF6C00] hover:text-white transition"
               >
                 Apply

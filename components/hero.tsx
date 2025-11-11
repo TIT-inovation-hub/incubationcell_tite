@@ -73,12 +73,18 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="px-8 py-3 bg-[#EF6C00] text-white font-semibold rounded-lg shadow-lg hover:scale-105 hover:shadow-orange-400/40 transition-transform duration-300">
+          <a
+            href="#events"
+            className="px-8 py-3 bg-[#EF6C00] text-white font-semibold rounded-lg shadow-lg hover:scale-105 hover:shadow-orange-400/40 transition-transform duration-300"
+          >
             Explore Events
-          </button>
-          <button className="px-8 py-3 border border-[#EF6C00] text-[#EF6C00] font-semibold rounded-lg hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-colors duration-300">
+          </a>
+          <a
+            href="/ourprojects"
+            className="px-8 py-3 border border-[#EF6C00] text-[#EF6C00] font-semibold rounded-lg hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-colors duration-300"
+          >
             Learn More
-          </button>
+          </a>
         </div>
       </div>
 
