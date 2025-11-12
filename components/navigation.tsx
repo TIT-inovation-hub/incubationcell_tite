@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 
 const NavbarComponent = () => {
@@ -10,8 +11,8 @@ const NavbarComponent = () => {
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const navLinks = [
-    { name: "HOME", href: "#home" },
-    { name: "ABOUT US", href: "#about" },
+    { name: "HOME", href: "/#home" },
+    { name: "ABOUT US", href: "/#about" },
     { name: "GUIDELINES", href: "#", isDropdown: true },
     { name: "OUR PROJECT", href: "/ourprojects" },
     { name: "FAQS", href: "/faqs" },
@@ -206,12 +207,18 @@ const NavbarComponent = () => {
                         <ul className="absolute left-1/2 transform -translate-x-1/2 mt-3 bg-white shadow-lg border border-gray-100 rounded-lg py-2 w-52 z-50">
                           {dropdownItems.map((item) => (
                             <li key={item.name}>
-                              <a
+                              <Link
                                 href={item.href}
+                                prefetch={
+                                  item.href === "/#about" ||
+                                  item.href === "/#home"
+                                    ? false
+                                    : true
+                                }
                                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-[#EF6C00] transition-colors"
                               >
                                 {item.name}
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>

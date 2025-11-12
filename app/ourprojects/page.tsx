@@ -1,43 +1,73 @@
-// Updated fully responsive version
-
 "use client";
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const featured = {
-  name: "SolarBloom",
-  logo: "https://via.placeholder.com/120",
+  name: "UPASTITHI",
+  logo: "/upastithi.png",
   description:
-    "SolarBloom is developing affordable solar-powered irrigation kits for small-scale farmers, helping increase crop yields while reducing reliance on fossil fuels.",
-  tags: ["Sustainability", "Agriculture", "Clean Energy"],
+    "Upastithi is an AI-powered attendance tracking solution that uses facial recognition and geolocation to ensure accurate, secure, and hassle-free attendance — even in offline or large-scale environments like classrooms, auditoriums, and conferences.",
+  tags: [
+    "AI Attendance",
+    "Face Recognition",
+    "Offline Ready",
+    "Location Verified",
+  ],
+  studentName: "Akash Kumar and Aman Mishra",
 };
+
+const startups = [
+  {
+    name: "CYBERHEX",
+    logo: "/cyberhexlogo.png",
+    description:
+      "CyberHX is an online cybersecurity learning platform that provides hands-on training for aspiring ethical hackers. It offers interactive courses, real-world simulations, and expert-led modules to help learners build practical skills in cyber defense, penetration testing, and digital forensics.",
+    tags: [
+      "Cyber Security",
+      "Ethical Hacking",
+      "Online Learning",
+      "Cyber Defense",
+    ],
+    studentName: "Kushagra Dwivedi",
+  },
+  {
+    name: "NIVAAS",
+    logo: "/nivaaslogo.png",
+    description:
+      "Nivaas is a smart hostel management system that connects students with the right accommodations and empowers admins to manage hostels efficiently. With features like real-time room updates, secure booking, and an intuitive dashboard, Nivaas makes hostel discovery and management seamless.",
+    tags: ["HostelApp", "SmartHostel", "RoomFinder", "Admin Dashboard"],
+    studentName: "Prakhar Shrivastav",
+  },
+];
 
 const projects = [
   {
-    name: "LearnAI",
-    logo: "https://via.placeholder.com/120",
+    name: "IRM PORTAL",
+    logo: "/irmlogo.png",
     description:
-      "LearnAI is a personalized learning platform that uses adaptive AI-driven tutoring to improve student outcomes in remote and underserved areas.",
-    tags: ["EdTech", "AI"],
-    link: "#",
+      "A smart incubation resource management platform that centralizes reports, task tracking, and attendance — enabling efficient allocation and monitoring of all incubation resources in one place.",
+    tags: [
+      "Resource Management",
+      "Automation",
+      "Task Tracking",
+      "Incubation Platform",
+    ],
+    studentName: "Prakhar and Balaji Iyer",
   },
   {
-    name: "HealthTrack",
-    logo: "https://via.placeholder.com/120",
+    name: "INCUBATION WEBSITE",
+    logo: "/logoincubation.png",
     description:
-      "HealthTrack provides community clinics with simple, offline-friendly patient record systems, increasing efficiency and continuity of care.",
-    tags: ["HealthTech", "Nonprofit"],
-    link: "#",
-  },
-  {
-    name: "AquaRise",
-    logo: "https://via.placeholder.com/120",
-    description:
-      "AquaRise builds low-cost water purification kiosks powered by renewable energy for rural and peri-urban communities.",
-    tags: ["Sustainability", "Water", "CleanTech"],
-    link: "#",
+      "A smart platform empowering startups with mentorship, tracking, and digital collaboration.Apply, explore, and grow with everything about the incubation center in one place.",
+    tags: [
+      "Incubation Platform",
+      "Startup Ecosystem",
+      "Mentorship",
+      "Innovation",
+    ],
+    studentName: "Keerti Bisen",
   },
 ];
 
@@ -57,28 +87,17 @@ const testimonials = [
 export default function OurProjectsPage() {
   return (
     <div className="px-4 sm:px-6 py-14 sm:py-20 max-w-7xl mx-auto space-y-20 sm:space-y-24">
-      {/* Header */}
-      <div className="text-center space-y-3 sm:space-y-4">
-        <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-black">
-          Our Projects
-        </h1>
-        <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
-          A showcase of the founders and ideas we’ve supported on their journey
-          to meaningful impact.
-        </p>
-      </div>
-
       {/* Featured Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-amber-50 p-6 sm:p-10 rounded-3xl border border-amber-200 shadow-sm space-y-6 md:flex md:items-center md:gap-10 md:space-y-0"
-      >
-        <img
-          src={featured.logo}
-          alt={featured.name}
-          className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-2xl border shadow-md bg-white mx-auto md:mx-0"
-        />
+      <section className="bg-amber-50 p-6 sm:p-10 rounded-3xl border border-amber-200 shadow-lg hover:shadow-xl space-y-6 md:flex md:items-center md:gap-10 md:space-y-0 transform-gpu">
+        <div className="relative w-24 h-24 sm:w-32 sm:h-32 mx-auto md:mx-0 rounded-2xl border shadow-md bg-white overflow-hidden">
+          <Image
+            src={featured.logo}
+            alt={featured.name}
+            fill
+            className="object-cover"
+          />
+        </div>
+
         <div className="space-y-3 sm:space-y-4 text-center md:text-left">
           <h2 className="text-xl sm:text-2xl font-semibold text-amber-700">
             Featured Startup of the Month
@@ -89,6 +108,7 @@ export default function OurProjectsPage() {
           <p className="text-gray-700 leading-relaxed text-sm sm:text-base max-w-xl mx-auto md:mx-0">
             {featured.description}
           </p>
+
           <div className="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-3 pt-1">
             {featured.tags.map((tag, i) => (
               <span
@@ -99,31 +119,37 @@ export default function OurProjectsPage() {
               </span>
             ))}
           </div>
-        </div>
-      </motion.section>
 
-      {/* Projects Section */}
+          <p className="pt-4 text-sm font-medium text-amber-700">
+            Created by{" "}
+            <span className="font-semibold">{featured.studentName}</span>
+          </p>
+        </div>
+      </section>
+
+      {/* Our Startups Section */}
       <section className="space-y-8 sm:space-y-10">
         <h2 className="text-2xl sm:text-3xl font-semibold text-black text-center">
           Our Startups
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
-          {projects.map((project, index) => (
-            <motion.div
+        <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
+          {startups.map((project, index) => (
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              className="w-full sm:w-[300px] md:w-[320px] lg:w-[340px] border-amber-200 rounded-2xl bg-white flex flex-col shadow-sm hover:shadow-xl transition-all duration-300"
             >
-              <Card className="border-amber-200 hover:shadow-xl transition rounded-2xl bg-white flex flex-col h-full">
+              <Card className="border-0 shadow-none bg-transparent flex flex-col h-full">
                 <CardContent className="p-6 sm:p-8 flex flex-col h-full">
                   <div className="flex flex-col items-center flex-1 space-y-4 sm:space-y-6">
-                    <img
-                      src={project.logo}
-                      alt={project.name}
-                      className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl border shadow"
-                    />
+                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl border shadow overflow-hidden">
+                      <Image
+                        src={project.logo}
+                        alt={project.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
 
                     <h3 className="text-lg sm:text-xl font-semibold text-center text-gray-900">
                       {project.name}
@@ -145,18 +171,76 @@ export default function OurProjectsPage() {
                     </div>
                   </div>
 
-                  {project.link && (
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="w-full mt-4 sm:mt-6 border-amber-300 text-amber-700 hover:bg-amber-100"
-                    >
-                      <a href={project.link}>Read More</a>
-                    </Button>
-                  )}
+                  <div className="mt-6 text-center border-t border-amber-100 pt-4">
+                    <p className="text-sm font-medium text-amber-700">
+                      Created by{" "}
+                      <span className="font-semibold">
+                        {project.studentName}
+                      </span>
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Our Projects Section */}
+      <section className="space-y-8 sm:space-y-10">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-black text-center">
+          Our Projects
+        </h2>
+
+        <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="w-full sm:w-[300px] md:w-[320px] lg:w-[340px] border-amber-200 rounded-2xl bg-white flex flex-col shadow-sm hover:shadow-xl transition-all duration-300"
+            >
+              <Card className="border-0 shadow-none bg-transparent flex flex-col h-full">
+                <CardContent className="p-6 sm:p-8 flex flex-col h-full">
+                  <div className="flex flex-col items-center flex-1 space-y-4 sm:space-y-6">
+                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl border shadow overflow-hidden">
+                      <Image
+                        src={project.logo}
+                        alt={project.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+
+                    <h3 className="text-lg sm:text-xl font-semibold text-center text-gray-900">
+                      {project.name}
+                    </h3>
+
+                    <p className="text-gray-600 text-sm leading-relaxed text-center">
+                      {project.description}
+                    </p>
+
+                    <div className="flex justify-center flex-wrap gap-2">
+                      {project.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1 text-xs bg-amber-50 border border-amber-200 rounded-full text-amber-700"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-6 text-center border-t border-amber-100 pt-4">
+                    <p className="text-sm font-medium text-amber-700">
+                      Created by{" "}
+                      <span className="font-semibold">
+                        {project.studentName}
+                      </span>
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
       </section>
@@ -172,8 +256,9 @@ export default function OurProjectsPage() {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.03, rotateZ: 1 }}
               transition={{ delay: i * 0.1 }}
-              className="bg-amber-50 border border-amber-200 p-6 sm:p-8 rounded-2xl shadow-sm"
+              className="bg-amber-50 border border-amber-200 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-md transform-gpu"
             >
               <p className="italic text-gray-800 leading-relaxed text-base sm:text-lg">
                 “{item.quote}”

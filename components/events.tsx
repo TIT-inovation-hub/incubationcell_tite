@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { X, Info } from "lucide-react";
+import { X, Info, ChevronLeft, ChevronRight, Download } from "lucide-react";
 import Image from "next/image";
 
 interface EventItem {
@@ -9,13 +9,14 @@ interface EventItem {
   title: string;
   date: string;
   category: string;
-  image: string;
+  images: string[]; // Changed from image:string to multiple images
   description: string;
   highlights: string[];
 }
 
 export default function Events() {
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
+  const [currentImage, setCurrentImage] = useState(0);
 
   const events: EventItem[] = [
     {
@@ -23,7 +24,7 @@ export default function Events() {
       title: "SIH Internal Hackathon",
       date: "September 28, 2025",
       category: "Event",
-      image: "/sihinternal.jpg",
+      images: ["/sihinternal.jpg", "/sih1.jpg", "/sih2.jpg"], // add more images
       description:
         "An exciting hackathon where students showcase creativity and problem-solving to qualify for the national Smart India Hackathon.",
       highlights: [
@@ -38,7 +39,7 @@ export default function Events() {
       title: "SIH Workshop",
       date: "September 20, 2025",
       category: "Workshop",
-      image: "/workshop.jpg",
+      images: ["/workshop.jpg", "/workshop2.jpg", "/workshop3.jpg"],
       description:
         "A preparatory workshop guiding students through problem-solving, ideation, and prototype development for the Smart India Hackathon.",
       highlights: [
@@ -53,7 +54,7 @@ export default function Events() {
       title: "Oracle Certification Workshop",
       date: "November 8, 2025",
       category: "Workshop",
-      image: "/oracle.avif",
+      images: ["/oracle.avif", "/oracle2.jpg", "/oracle3.jpg"],
       description:
         "A skill-building workshop designed to help students prepare for Oracle certification exams with expert guidance.",
       highlights: [
@@ -64,6 +65,28 @@ export default function Events() {
       ],
     },
   ];
+
+  const handleNextImage = () => {
+    if (!selectedEvent) return;
+    setCurrentImage((prev) =>
+      prev === selectedEvent.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const handlePrevImage = () => {
+    if (!selectedEvent) return;
+    setCurrentImage((prev) =>
+      prev === 0 ? selectedEvent.images.length - 1 : prev - 1
+    );
+  };
+
+  const handleDownload = () => {
+    if (!selectedEvent) return;
+    const link = document.createElement("a");
+    link.href = selectedEvent.images[currentImage];
+    link.download = `${selectedEvent.title}-${currentImage + 1}.jpg`;
+    link.click();
+  };
 
   return (
     <section
@@ -86,13 +109,16 @@ export default function Events() {
           {events.map((event) => (
             <div
               key={event.id}
-              onClick={() => setSelectedEvent(event)}
+              onClick={() => {
+                setSelectedEvent(event);
+                setCurrentImage(0);
+              }}
               className="group relative w-full max-w-sm mx-auto cursor-pointer rounded-2xl border border-gray-100 dark:border-gray-800 bg-white/80 dark:bg-white/5 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300"
             >
               {/* === Image === */}
               <div className="relative h-64 sm:h-72 overflow-hidden rounded-t-2xl">
                 <Image
-                  src={event.image}
+                  src={event.images[0]}
                   alt={event.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -147,14 +173,37 @@ export default function Events() {
             </div>
 
             <div className="p-6 space-y-6">
-              <div className="relative w-full h-80 rounded-xl overflow-hidden">
+              {/* === Image Carousel === */}
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-xl overflow-hidden">
                 <Image
-                  src={selectedEvent.image}
+                  src={selectedEvent.images[currentImage]}
                   alt={selectedEvent.title}
                   fill
-                  className="object-cover rounded-xl"
+                  className="object-contain bg-black/10 rounded-xl"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 700px"
                 />
+
+                {/* Navigation Buttons */}
+                <button
+                  onClick={handlePrevImage}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={handleNextImage}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition"
+                >
+                  <ChevronRight size={20} />
+                </button>
+
+                {/* Download Button */}
+                <button
+                  onClick={handleDownload}
+                  className="absolute bottom-3 right-3 bg-[#EF6C00] hover:bg-[#FF9800] text-white px-3 py-2 rounded-lg text-sm flex items-center gap-1 transition"
+                >
+                  <Download size={16} />
+                </button>
               </div>
 
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg">

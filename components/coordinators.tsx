@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 export default function Coordinators() {
@@ -37,6 +38,12 @@ export default function Coordinators() {
       role: "Project Manager",
       department: "CSE",
       image: "/amit.jpg",
+    },
+    {
+      name: "BALAJI IYER",
+      role: "Software Engineer",
+      department: "CSE",
+      image: "/balaji.jpg",
     },
   ];
 

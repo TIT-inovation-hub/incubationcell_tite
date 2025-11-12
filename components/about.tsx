@@ -1,9 +1,10 @@
+"use client";
 export default function About() {
   const stats = [
-    { number: "500+", label: "Students Engaged" },
-    { number: "50+", label: "Startups Mentored" },
-    { number: "100+", label: "Events Organized" },
-    { number: "25+", label: "Industry Partners" },
+    { number: "50+", label: "Students Engaged" },
+    { number: "10+", label: "Startups Mentored" },
+    { number: "15+", label: "Events Organized" },
+    { number: "10+", label: "Industry Partners" },
   ];
 
   return (

@@ -1,142 +1,166 @@
+"use client";
+
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  useAnimationFrame,
+} from "framer-motion";
+import { useRef } from "react";
 import AnimatedDots from "./AnimatedDots";
 
 export default function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-500, 500], [15, -15]);
+  const rotateY = useTransform(x, [-500, 500], [-15, 15]);
+
+  useAnimationFrame(() => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    const mx = (window.innerWidth / 2 - window.innerWidth / 2) / 2;
+    const my = (window.innerHeight / 2 - window.innerHeight / 2) / 2;
+    x.set(mx);
+    y.set(my);
+  });
+
   return (
     <section
       id="home"
-      className="relative overflow-hidden md:pt-20 md:pb-20 px-4 py-[100px] sm:px-6 lg:px-8 bg-linear-to-b from-[#FFF8F2] to-white dark:from-[#050505] dark:to-[#0B0B0B] transition-colors duration-500"
+      ref={ref}
+      className="relative overflow-hidden md:pt-20 md:pb-20 px-4 py-8 sm:px-6 lg:px-8 bg-gradient-to-b from-[#FFF4E0] to-[#ffffff] dark:from-[#060606] dark:to-[#0B0B0B] transition-colors duration-700"
     >
-      {/* === BACKGROUND GRAPHICS === */}
+      {/* === BACKGROUND TECH LAYERS === */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* 🔸 Glowing 3D Blobs */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-linear-to-br from-[#EF6C00]/70 to-[#FFB300]/30 rounded-full blur-[150px] opacity-80 animate-blob"></div>
-        <div className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-linear-to-tr from-cyan-400/60 to-blue-600/30 rounded-full blur-[180px] opacity-70 animate-blob delay-700"></div>
+        {/* 🌈 Dynamic Energy Field (no glow) */}
+        <motion.div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFB300]/25 via-transparent to-transparent"
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute inset-0 bg-[conic-gradient(from_180deg,_#EF6C00_0%,_#00BCD4_60%,_#EF6C00_100%)] opacity-[0.12]"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+        />
 
-        {/* 🔹 3D Light Rings */}
-        <div className="absolute top-1/2 left-1/2 w-[900px] h-[900px] border border-cyan-400/20 rounded-full blur-sm animate-spin-slower transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute top-1/2 left-1/2 w-[700px] h-[700px] border border-orange-400/15 rounded-full blur-sm animate-spin-slow transform -translate-x-1/2 -translate-y-1/2"></div>
-
-        {/* 🔸 Circuit Mesh Background */}
+        {/* 🧠 Techy Circuits Grid */}
         <svg
-          className="absolute inset-0 w-full h-full opacity-[0.10]"
+          className="absolute inset-0 w-full h-full opacity-25"
           xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
         >
           <defs>
-            <pattern
-              id="mesh"
-              width="120"
-              height="120"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M0 60 H120 M60 0 V120"
-                stroke="url(#meshGrad)"
-                strokeWidth="0.6"
-                strokeLinecap="round"
-              />
-            </pattern>
-            <linearGradient id="meshGrad" x1="0" y1="0" x2="1" y2="1">
+            <linearGradient id="circuitGlow" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#EF6C00" />
               <stop offset="100%" stopColor="#00BCD4" />
             </linearGradient>
           </defs>
-          <rect width="100%" height="100%" fill="url(#mesh)" />
+          <motion.path
+            d="M0,400 C200,300 400,500 600,400 C800,300 1000,500 1200,400 L1400,300"
+            stroke="url(#circuitGlow)"
+            strokeWidth="1.3"
+            strokeLinecap="round"
+            fill="none"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: [0, 1, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.circle
+            r="2"
+            fill="#FF9800"
+            initial={{ cx: 0 }}
+            animate={{ cx: [0, 1400, 0] }}
+            cy="400"
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
         </svg>
 
-        {/* 🔹 Floating Particles (safe for hydration) */}
+        {/* ✨ Floating Dots / Subtle overlay */}
         <AnimatedDots />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-transparent dark:from-black/40 dark:via-black/10 backdrop-blur-[1px]" />
 
-        {/* 🔸 Light Trails */}
-        <div className="absolute top-1/4 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-orange-400/50 to-transparent blur-sm animate-light-trail"></div>
-        <div className="absolute bottom-1/3 right-0 w-full h-0.5 bg-linear-to-l from-transparent via-cyan-400/40 to-transparent blur-sm animate-light-trail delay-500"></div>
+        {/* ⚡ Electric Flow Lines */}
+        <div className="absolute top-[25%] left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#FF9800]/70 to-transparent animate-light-trail"></div>
+        <div className="absolute bottom-[25%] right-0 w-full h-[1.5px] bg-gradient-to-l from-transparent via-[#00BCD4]/70 to-transparent animate-light-trail delay-700"></div>
+
+        {/* 🪩 3D Gradient Halo Rings (clean lines) */}
+        <motion.div
+          style={{ perspective: 1000, rotateX, rotateY }}
+          animate={{ rotateZ: 360 }}
+          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/2 left-1/2 w-[600px] h-[600px] border border-[#00BCD4]/20 rounded-full -translate-x-1/2 -translate-y-1/2"
+        />
+        <motion.div
+          animate={{ rotateZ: -360 }}
+          transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/2 left-1/2 w-[800px] h-[800px] border border-[#EF6C00]/10 rounded-full -translate-x-1/2 -translate-y-1/2"
+        />
       </div>
 
-      {/* === HERO CONTENT === */}
-      <div className="relative z-10 max-w-7xl mx-auto text-center">
-        <div className="inline-block mb-10 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full backdrop-blur-sm">
-          <span className="text-lg sm:text-sm font-semibold text-accent">
+      {/* === CONTENT === */}
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto text-center"
+        style={{ rotateX, rotateY }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="inline-block mb-10 px-6 py-2 bg-gradient-to-r from-[#EF6C00]/20 to-[#00BCD4]/20 border border-[#EF6C00]/30 rounded-full backdrop-blur-sm"
+        >
+          <span className="text-lg sm:text-sm font-semibold text-[#EF6C00] dark:text-[#FFB300]">
             Welcome to Innovation Hub
           </span>
-        </div>
+        </motion.div>
 
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-gray-900 dark:text-white">
-          TIT Excellence
-          <span className="block text-transparent bg-clip-text bg-linear-to-r from-[#EF6C00] via-[#FF9800] to-[#00BCD4] animate-gradient">
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2 }}
+          className="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-8 leading-tight text-gray-900 dark:text-white"
+        >
+          TIT Excellence{" "}
+          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#EF6C00] via-[#FF9800] to-[#00BCD4] animate-gradient">
             Incubation Cell
           </span>
-        </h1>
+        </motion.h1>
 
-        <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4 }}
+          className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed"
+        >
           Nurturing entrepreneurial minds and transforming ideas into impactful
           ventures. Empowering students to innovate, collaborate, and lead the
           future.
-        </p>
+        </motion.p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.6 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+        >
           <a
             href="#events"
-            className="px-8 py-3 bg-[#EF6C00] text-white font-semibold rounded-lg shadow-lg hover:scale-105 hover:shadow-orange-400/40 transition-transform duration-300"
+            className="px-8 py-3 bg-gradient-to-r from-[#EF6C00] to-[#FF9800] text-white font-semibold rounded-lg hover:scale-105 transition-all duration-300"
           >
             Explore Events
           </a>
           <a
             href="/ourprojects"
-            className="px-8 py-3 border border-[#EF6C00] text-[#EF6C00] font-semibold rounded-lg hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-colors duration-300"
+            className="px-8 py-3 border border-[#00BCD4] text-[#00BCD4] font-semibold rounded-lg hover:bg-cyan-50 dark:hover:bg-cyan-950/30 transition-all duration-300"
           >
             Learn More
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      {/* === ANIMATIONS === */}
+      {/* === KEYFRAME ANIMATIONS === */}
       <style jsx global>{`
-        @keyframes float {
-          0% {
-            transform: translateY(0px);
-            opacity: 0.9;
-          }
-          50% {
-            transform: translateY(-10px);
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(0px);
-            opacity: 0.9;
-          }
-        }
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes blob {
-          0%,
-          100% {
-            transform: scale(1) translate(0, 0);
-          }
-          50% {
-            transform: scale(1.1) translate(20px, -15px);
-          }
-        }
-        .animate-blob {
-          animation: blob 15s ease-in-out infinite;
-        }
-
-        .animate-spin-slow {
-          animation: spin 45s linear infinite;
-        }
-        .animate-spin-slower {
-          animation: spin 70s linear infinite reverse;
-        }
-
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
         @keyframes lightTrail {
           0% {
             transform: translateX(-100%);
@@ -156,17 +180,17 @@ export default function Hero() {
 
         @keyframes gradientShift {
           0% {
-            background-position: 0% 50%;
+            background-position: 0%;
           }
           50% {
-            background-position: 100% 50%;
+            background-position: 100%;
           }
           100% {
-            background-position: 0% 50%;
+            background-position: 0%;
           }
         }
         .animate-gradient {
-          background-size: 200% 200%;
+          background-size: 300% 300%;
           animation: gradientShift 6s ease infinite;
         }
       `}</style>

@@ -11,8 +11,7 @@ export default function AnimatedDots() {
   const [dots, setDots] = useState<Dot[]>([]);
 
   useEffect(() => {
-    // Generate random dots after hydration (client-side only)
-    const newDots = Array.from({ length: 20 }).map((_, i) => ({
+    const newDots = Array.from({ length: 35 }).map((_, i) => ({
       top: `${10 + Math.random() * 80}%`,
       left: `${5 + Math.random() * 90}%`,
       delay: `${i * 0.4}s`,
@@ -25,11 +24,12 @@ export default function AnimatedDots() {
       {dots.map((dot, i) => (
         <div
           key={i}
-          className="absolute w-[4px] h-[4px] bg-cyan-400 rounded-full opacity-80 shadow-[0_0_8px_#00BCD4] animate-float"
+          className="absolute w-[5px] h-[5px] bg-cyan-300 rounded-full opacity-90 shadow-[0_0_12px_#22d3ee] animate-float"
           style={{
             top: dot.top,
             left: dot.left,
             animationDelay: dot.delay,
+            animationDuration: `${6 + Math.random() * 6}s`,
           }}
         ></div>
       ))}

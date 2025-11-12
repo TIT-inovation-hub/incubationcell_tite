@@ -1,3 +1,4 @@
+"use client";
 import {
   Mail,
   Phone,
@@ -7,6 +8,7 @@ import {
   Instagram,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -43,36 +45,40 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm opacity-80">
               <li>
-                <a
-                  href="#about"
+                <Link
+                  href="/#about"
                   className="hover:text-accent transition-colors"
+                  prefetch={false}
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#mentors"
+                <Link
+                  href="/#mentors"
                   className="hover:text-accent transition-colors"
+                  prefetch={false}
                 >
                   Mentors
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#events"
+                <Link
+                  href="/#events"
                   className="hover:text-accent transition-colors"
+                  prefetch={false}
                 >
                   Events
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#coordinators"
+                <Link
+                  href="/#coordinators"
                   className="hover:text-accent transition-colors"
+                  prefetch={false}
                 >
                   Team
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -83,11 +89,11 @@ export default function Footer() {
             <ul className="space-y-3 text-sm opacity-80">
               <li className="flex items-center gap-2">
                 <Mail size={16} />
-                <span>info@titexcellence.edu</span>
+                <span>Incubationtit@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={16} />
-                <span>+91 7000673152</span>
+                <span>+91 99847 53791</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="mt-0.5 flex-shrink-0" />
