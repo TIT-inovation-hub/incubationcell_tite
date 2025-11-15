@@ -58,10 +58,10 @@ export default function Events() {
       description:
         "A skill-building workshop designed to help students prepare for Oracle certification exams with expert guidance.",
       highlights: [
-        "20+ Investors",
-        "One-on-One Meetings",
-        "Refreshments",
-        "Follow-up Support",
+        "Hands-On Training",
+        "Certification-Focused Curriculum",
+        "Real-World Skills",
+        "Skill Boost",
       ],
     },
   ];
@@ -159,7 +159,7 @@ export default function Events() {
       {selectedEvent && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white/90 dark:bg-[#111]/90 backdrop-blur-md border border-gray-200/20 dark:border-gray-700/40 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transition-all">
-            <div className="flex justify-between items-center p-6 border-b border-gray-200/10">
+            <div className="flex justify-between items-center p-4 border-b border-gray-200/10">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                 {selectedEvent.title}
               </h2>
@@ -172,7 +172,7 @@ export default function Events() {
               </button>
             </div>
 
-            <div className="p-6 space-y-6">
+            <div className="p-4 space-y-4">
               {/* === Image Carousel === */}
               <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-xl overflow-hidden">
                 <Image
@@ -226,10 +226,6 @@ export default function Events() {
                   ))}
                 </ul>
               </div>
-
-              <button className="w-full bg-[#EF6C00] text-white font-semibold py-3 rounded-lg hover:bg-[#FF9800]/90 transition text-sm sm:text-base">
-                Register Now
-              </button>
             </div>
           </div>
         </div>

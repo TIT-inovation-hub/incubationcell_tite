@@ -594,7 +594,7 @@ export default function App() {
                   href="tel:+911234567890"
                   className="text-sm underline decoration-[#ffb300] text-[#071233]"
                 >
-                  +91 12345 67890
+                  +91 99847 53791
                 </a>
               </div>
             </div>

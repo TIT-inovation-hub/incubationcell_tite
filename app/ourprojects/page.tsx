@@ -15,12 +15,12 @@ const featured = {
     "Offline Ready",
     "Location Verified",
   ],
-  studentName: "Akash Kumar and Aman Mishra",
+  studentName: "Akash Kumar & Aman Mishra",
 };
 
 const startups = [
   {
-    name: "CYBERHEX",
+    name: "CYBERHX",
     logo: "/cyberhexlogo.png",
     description:
       "CyberHX is an online cybersecurity learning platform that provides hands-on training for aspiring ethical hackers. It offers interactive courses, real-world simulations, and expert-led modules to help learners build practical skills in cyber defense, penetration testing, and digital forensics.",
@@ -40,6 +40,19 @@ const startups = [
     tags: ["HostelApp", "SmartHostel", "RoomFinder", "Admin Dashboard"],
     studentName: "Prakhar Shrivastav",
   },
+  {
+    name: "UPASTITHI",
+    logo: "/upastithi.png",
+    description:
+      "Upastithi is an AI-powered attendance tracking solution that uses facial recognition and geolocation to ensure accurate, secure, and hassle-free attendance — even in offline or large-scale environments like classrooms, auditoriums, and conferences.",
+    tags: [
+      "AI Attendance",
+      "Face Recognition",
+      "Offline Ready",
+      "Location Verified",
+    ],
+    studentName: "Akash Kumar & Aman Mishra",
+  },
 ];
 
 const projects = [
@@ -54,7 +67,7 @@ const projects = [
       "Task Tracking",
       "Incubation Platform",
     ],
-    studentName: "Prakhar and Balaji Iyer",
+    studentName: "Prakhar & Balaji Iyer",
   },
   {
     name: "INCUBATION WEBSITE",
@@ -75,12 +88,27 @@ const testimonials = [
   {
     quote:
       "The incubation support helped us refine our business model and secure our first round of funding.",
-    founder: "Ayesha Khan, Founder of LearnAI",
+    founder: "Prakhar Shrivastav",
   },
   {
     quote:
       "What truly set this program apart was the mentorship — practical and deeply aligned with our mission.",
-    founder: "Ravi Patel, Co-Founder of SolarBloom",
+    founder: "Aman Mishra",
+  },
+  {
+    quote:
+      "The Innovation Cell helped me turn my rough idea into a real project. The mentors were super supportive and pushed me to think creatively.",
+    founder: "Akash Kumar",
+  },
+  {
+    quote:
+      "Being part of the Innovation Cell boosted my confidence. I learned how to pitch, prototype, and work in a real startup-like environment.",
+    founder: "Keerti Bisen",
+  },
+  {
+    quote:
+      "Working with students from different departments helped me explore perspectives outside my field. It’s an amazing collaborative space.",
+    founder: "Amit Mehta",
   },
 ];
 
