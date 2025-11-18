@@ -17,7 +17,7 @@ export default function Coordinators() {
     },
     {
       name: "KUSHAGRA DWIVEDI",
-      role: "Events Coordinator",
+      role: "Event Coordinator",
       department: "CYBER SECURITY",
       image: "/kushagra.jpg",
     },
@@ -44,6 +44,12 @@ export default function Coordinators() {
       role: "Software Engineer",
       department: "CSE",
       image: "/balaji.jpg",
+    },
+    {
+      name: "NIKHIL MAHALIK",
+      role: "HR & Web Developer",
+      department: "CSE",
+      image: "/nikhil.jpg",
     },
   ];
 

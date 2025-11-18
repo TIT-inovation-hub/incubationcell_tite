@@ -109,21 +109,21 @@ export default function Footer() {
             </h4>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/company/incubation-cell-tite/"
                 className="p-2 bg-primary-foreground/10 rounded-lg hover:bg-primary-foreground/20 transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
               </a>
               <a
-                href="#"
+                href="https://x.com/incubationtit?t=sL_axz-gnZrLAOM_7BEPEQ&s=09"
                 className="p-2 bg-primary-foreground/10 rounded-lg hover:bg-primary-foreground/20 transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/incubationcell_tite?igsh=MWEzb2U4a2ZzdTBtZw=="
                 className="p-2 bg-primary-foreground/10 rounded-lg hover:bg-primary-foreground/20 transition-colors"
                 aria-label="Instagram"
               >

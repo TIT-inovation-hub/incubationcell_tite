@@ -5,20 +5,20 @@ export default function Mentors() {
   const mentors = [
     {
       name: "MR. AMAR NAYAK",
-      title: "Founder & CEO, TechVentures",
-      expertise: "Technology & Innovation",
+      title: "Incubation In-charge",
+      expertise: "Technical Guidance & Project Mentoring",
       image: "/amarsir.jpg",
     },
     {
       name: "MRS. RACHANA KAMBLE",
-      title: "Business Strategy Consultant",
-      expertise: "Business Development",
+      title: "IPR, Research & Social Media In-charge",
+      expertise: "IPR Specialist & Research Support",
       image: "/rachanamam.jpg",
     },
     {
       name: "MR. RAM SAHU",
-      title: "Investment Advisor",
-      expertise: "Management & Finance",
+      title: "Administration & Infrastructure In-charge",
+      expertise: "Infrastructure Management & Administration",
       image: "/ramsir.jpg",
     },
   ];

@@ -21,21 +21,6 @@ export default function Events() {
   const events: EventItem[] = [
     {
       id: 1,
-      title: "SIH Internal Hackathon",
-      date: "September 28, 2025",
-      category: "Event",
-      images: ["/sihinternal.jpg", "/sih1.jpg", "/sih2.jpg"], // add more images
-      description:
-        "An exciting hackathon where students showcase creativity and problem-solving to qualify for the national Smart India Hackathon.",
-      highlights: [
-        "Prize Pool: ₹5 Lakhs",
-        "50+ Participants",
-        "Industry Judges",
-        "Networking Session",
-      ],
-    },
-    {
-      id: 2,
       title: "SIH Workshop",
       date: "September 20, 2025",
       category: "Workshop",
@@ -47,6 +32,39 @@ export default function Events() {
         "200+ Attendees",
         "Hands-on Sessions",
         "Certificates",
+      ],
+    },
+    {
+      id: 2,
+      title: "SIH Internal Hackathon",
+      date: "September 28, 2025",
+      category: "Event",
+      images: [
+        "/internalsih.jpg",
+        "/internalsih2.jpg",
+        "/internalsih3.jpg",
+        "/internalsih4.jpg",
+        "/internalsih5.jpg",
+        "/internalsih6.jpg",
+        "/internalsih7.jpg",
+
+        "/internalsih8.jpg",
+
+        "/internalsih9.jpg",
+
+        "/internalsih10.jpg",
+
+        "/internalsih11.jpg",
+
+        "/internalsih12.jpg",
+      ], // add more images
+      description:
+        "An exciting hackathon where students showcase creativity and problem-solving to qualify for the national Smart India Hackathon.",
+      highlights: [
+        "Prize Pool: ₹5 Lakhs",
+        "50+ Participants",
+        "Industry Judges",
+        "Networking Session",
       ],
     },
     {
