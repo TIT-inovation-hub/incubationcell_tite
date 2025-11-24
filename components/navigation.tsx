@@ -152,7 +152,7 @@ const NavbarComponent = () => {
             </a>
 
             <a
-              href="https://irm-portal.netlify.app/"
+              href="https://irm-v2.netlify.app/"
               className="hidden md:inline-block relative px-6 sm:px-7 py-3 bg-[#EF6C00] text-white text-base sm:text-lg font-semibold rounded-2xl transition-colors hover:bg-orange-700 shadow-md"
             >
               Login
@@ -293,7 +293,7 @@ const NavbarComponent = () => {
                 Apply
               </a>
               <a
-                href="https://irm-portal.netlify.app/"
+                href="https://irm-v2.netlify.app/"
                 className="w-full text-center px-6 py-2 bg-[#EF6C00] text-white font-semibold rounded-2xl hover:bg-orange-700 transition relative"
               >
                 Login
