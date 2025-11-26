@@ -66,12 +66,21 @@ const NavbarComponent = () => {
           border-radius: 9999px;
           border: 1px solid white;
         }
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          border: 0;
+        }
       `}</style>
 
       <header className="shadow-md bg-white w-full">
         <div className="h-2 bg-[#EF6C00]" />
 
-        {/* === Top Section === */}
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 flex justify-between items-center flex-wrap gap-3">
           {/* Logos */}
           <div className="flex items-center flex-wrap gap-3 sm:gap-5 md:gap-6">
@@ -144,28 +153,32 @@ const NavbarComponent = () => {
 
           {/* Buttons */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <a
+            <Link
               href="/contactus"
               className="hidden md:inline-block px-6 sm:px-7 py-3 border-2 border-[#EF6C00] text-[#EF6C00] text-base sm:text-lg font-semibold rounded-2xl transition-colors hover:bg-[#EF6C00] hover:text-white shadow-sm"
             >
               Apply
-            </a>
+            </Link>
 
             <a
               href="https://irm-v2.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden md:inline-block relative px-6 sm:px-7 py-3 bg-[#EF6C00] text-white text-base sm:text-lg font-semibold rounded-2xl transition-colors hover:bg-orange-700 shadow-md"
             >
               Login
               <span className="sih-login-dot" />
             </a>
 
-            {/* Mobile Toggle */}
             <button
               className="md:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu-links"
             >
+              <span className="sr-only">
+                {isMenuOpen ? "Close menu" : "Open menu"}
+              </span>
               <svg
                 className="w-6 h-6"
                 fill="none"
@@ -187,7 +200,7 @@ const NavbarComponent = () => {
           </div>
         </div>
 
-        {/* === Desktop Nav === */}
+        {/* Desktop Nav */}
         <nav className="hidden md:block border-t border-gray-200 relative">
           <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
             <ul className="flex justify-center space-x-8 text-sm lg:text-base font-medium text-[#555] h-12 items-center">
@@ -195,13 +208,14 @@ const NavbarComponent = () => {
                 <li key={link.name} className="relative">
                   {link.isDropdown ? (
                     <div ref={dropdownRef} className="relative">
-                      {" "}
-                      {/* 👈 Wrap with ref */}
                       <button
                         onClick={() => setIsDropdownOpen((prev) => !prev)}
                         className="hover:text-[#EF6C00] transition-colors dropdown-arrow flex items-center gap-1"
+                        aria-haspopup="true"
+                        aria-expanded={isDropdownOpen}
                       >
                         {link.name}
+                        <span className="sr-only">Toggle guidelines menu</span>
                       </button>
                       {isDropdownOpen && (
                         <ul className="absolute left-1/2 transform -translate-x-1/2 mt-3 bg-white shadow-lg border border-gray-100 rounded-lg py-2 w-52 z-50">
@@ -209,12 +223,7 @@ const NavbarComponent = () => {
                             <li key={item.name}>
                               <Link
                                 href={item.href}
-                                prefetch={
-                                  item.href === "/#about" ||
-                                  item.href === "/#home"
-                                    ? false
-                                    : true
-                                }
+                                prefetch={false} // improves performance
                                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-[#EF6C00] transition-colors"
                               >
                                 {item.name}
@@ -225,12 +234,13 @@ const NavbarComponent = () => {
                       )}
                     </div>
                   ) : (
-                    <a
+                    <Link
                       href={link.href}
                       className="hover:text-[#EF6C00] transition-colors"
+                      prefetch={link.href.startsWith("/#") ? false : true} // optional prefetch
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   )}
                 </li>
               ))}
@@ -238,7 +248,7 @@ const NavbarComponent = () => {
           </div>
         </nav>
 
-        {/* === Mobile Menu === */}
+        {/* Mobile Menu */}
         <nav
           id="mobile-menu-links"
           className={`${
@@ -261,39 +271,41 @@ const NavbarComponent = () => {
                       <ul className="mt-1 ml-3 border-l border-gray-200 pl-3 space-y-1">
                         {dropdownItems.map((item) => (
                           <li key={item.name}>
-                            <a
+                            <Link
                               href={item.href}
                               className="block py-1 text-gray-600 hover:text-[#EF6C00] transition-colors"
+                              prefetch={false}
                             >
                               {item.name}
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
                     )}
                   </div>
                 ) : (
-                  <a
+                  <Link
                     href={link.href}
                     className="block py-2 hover:text-[#EF6C00] transition-colors"
-                    onClick={() => setIsMenuOpen(false)} // close on click
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 )}
               </li>
             ))}
 
-            {/* Mobile Buttons */}
             <div className="mt-3 flex flex-col gap-2">
-              <a
+              <Link
                 href="/contactus"
                 className="w-full text-center px-6 py-2 border-2 border-[#EF6C00] text-[#EF6C00] font-semibold rounded-2xl hover:bg-[#EF6C00] hover:text-white transition"
               >
                 Apply
-              </a>
+              </Link>
               <a
                 href="https://irm-v2.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full text-center px-6 py-2 bg-[#EF6C00] text-white font-semibold rounded-2xl hover:bg-orange-700 transition relative"
               >
                 Login

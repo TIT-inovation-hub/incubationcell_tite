@@ -18,8 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TIT Incubation Hub",
-  description: "",
+  title: "IncubationCell TITE",
+  description:
+    "IncubationCell TITE provides students and innovators with resources, mentorship, and programs to nurture creativity and launch successful projects.",
 };
 
 export default function RootLayout({

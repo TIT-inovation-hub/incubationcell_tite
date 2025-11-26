@@ -108,9 +108,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="inline-block mb-10 px-6 py-2 bg-gradient-to-r from-[#EF6C00]/20 to-[#00BCD4]/20 border border-[#EF6C00]/30 rounded-full backdrop-blur-sm"
+          className="inline-block mb-10 px-4 sm:px-6 py-2 bg-gradient-to-r from-[#EF6C00]/20 to-[#00BCD4]/20 border border-[#EF6C00]/30 rounded-full backdrop-blur-sm"
         >
-          <span className="text-lg sm:text-sm font-semibold text-[#EF6C00] dark:text-[#FFB300]">
+          <span className="text-md sm:text-md font-semibold text-[#EF6C00] dark:text-[#FFB300]">
             Welcome to Innovation Hub
           </span>
         </motion.div>
